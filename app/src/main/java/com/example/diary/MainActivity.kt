@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.diary.navigation.Screen
+import com.example.diary.navigation.SetupNavGraph
 import com.example.diary.ui.theme.DiaryTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +21,11 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             DiaryTheme {
-                // A surface container using the 'background' color from the theme
+                val navController: rememberNavController()
+                SetupNavGraph(
+                    startDestination = Screen.Authentication.route,
+                    navController = navController
+                )
 
             }
         }
